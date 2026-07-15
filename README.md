@@ -38,10 +38,10 @@ bash install.sh
 ### Open
 
 ```bash
-# macOS
-open -a Camoufox
+# macOS (prefer CLI or full path so the cache copy is not opened by name)
 camoufox-app
 camoufox-app https://example.com
+open ~/Applications/Camoufox.app
 
 # Linux
 camoufox-app

@@ -11,9 +11,9 @@ curl -fsSL https://raw.githubusercontent.com/claudianus/camoufox-desktop/main/in
 ## 실행
 
 ```bash
-open -a Camoufox
 camoufox-app
 camoufox-app https://example.com
+open ~/Applications/Camoufox.app
 ```
 
 Dock 고정: Finder → 이동 → 홈 → Applications → **Camoufox** → Dock으로 드래그

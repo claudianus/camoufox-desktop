@@ -16,7 +16,8 @@ case "$os" in
       echo "App not installed. Run: bash $ROOT/install.sh" >&2
       exit 1
     fi
-    if [[ $# -eq 0 ]]; then open -a "$APP"; else open -na "$APP" --args "$@"; fi
+    # Bundle path — avoid name match to cached official Camoufox.app
+if [[ $# -eq 0 ]]; then open "$APP"; else open -n "$APP" --args "$@"; fi
     ;;
   linux)
     LAUNCH="${CAMOUFOX_DESKTOP_HOME:-$HOME/.local/share/camoufox-desktop}/launch-camoufox.sh"

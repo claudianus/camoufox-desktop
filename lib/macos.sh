@@ -116,10 +116,12 @@ if [[ ! -d "$APP" ]]; then
   echo "Reinstall: curl -fsSL https://raw.githubusercontent.com/claudianus/camoufox-desktop/main/install.sh | bash" >&2
   exit 1
 fi
+# Prefer bundle path (not -a name) so LaunchServices does not pick
+# ~/Library/Caches/camoufox/Camoufox.app over ~/Applications/Camoufox.app
 if [[ $# -eq 0 ]]; then
-  open -a "$APP"
+  open "$APP"
 else
-  open -na "$APP" --args "$@"
+  open -n "$APP" --args "$@"
 fi
 EOF
   chmod +x "$cli"

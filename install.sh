@@ -85,9 +85,9 @@ main() {
   Cache:   $(cfd_cache_dir)
 
 Open:
-  open -a Camoufox
   camoufox-app
   camoufox-app https://example.com
+  open ~/Applications/Camoufox.app
 
 Dock pin (macOS):
   Finder → Go → Home → Applications → Camoufox → drag to Dock
