@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=/dev/null
+source "$ROOT/lib/common.sh"
+# shellcheck source=/dev/null
+source "$ROOT/lib/macos.sh"
+# shellcheck source=/dev/null
+source "$ROOT/lib/linux.sh"
+
+os="$(cfd_os)"
+case "$os" in
+  macos)
+    APP="${CAMOUFOX_DESKTOP_APP:-$HOME/Applications/Camoufox.app}"
+    if [[ ! -d "$APP" ]]; then
+      echo "App not installed. Run: bash $ROOT/install.sh" >&2
+      exit 1
+    fi
+    if [[ $# -eq 0 ]]; then open -a "$APP"; else open -na "$APP" --args "$@"; fi
+    ;;
+  linux)
+    LAUNCH="${CAMOUFOX_DESKTOP_HOME:-$HOME/.local/share/camoufox-desktop}/launch-camoufox.sh"
+    if [[ ! -x "$LAUNCH" ]]; then
+      echo "Launcher not installed. Run: bash $ROOT/install.sh" >&2
+      exit 1
+    fi
+    exec "$LAUNCH" "$@"
+    ;;
+  *)
+    echo "Unsupported OS: $os" >&2
+    exit 1
+    ;;
+esac
